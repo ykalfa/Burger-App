@@ -46,7 +46,6 @@ class BurgerBuilder extends Component {
     const oldPrice = this.state.totalPrice;
     const newPrice = oldPrice + priceAddition;
     this.setState({ totalPrice: newPrice, ingredients: updatedIngredients });
-    console.log(this.state.totalPrice);
     this.updatePurchaseState(updatedIngredients);
   };
 
@@ -75,6 +74,7 @@ class BurgerBuilder extends Component {
 
   purchaseContinueHandler = () => {
     alert("You continue!");
+    this.setState({ purchasing: false });
   };
 
   render() {
@@ -94,6 +94,7 @@ class BurgerBuilder extends Component {
             ingredients={this.state.ingredients}
             purchaseCancelled={this.purchaseCancelleHandler}
             purchaseContinued={this.purchaseContinueHandler}
+            price={this.state.totalPrice.toFixed(2)}
           />
         </Modal>
         <Burger ingredients={this.state.ingredients} />
